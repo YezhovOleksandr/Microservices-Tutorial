@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "8JtsAZtXIlo7EPgHeunnN6DYDK92x9AwGeBFBHI3eeXJN0wGzSY3sma8pKaNcKPga2ye9YQod72+GxBmHMQDog==",
+  "success": true,
+  "projectFilePath": "D:\\Microservices\\Carsties\\src\\Contracts\\Contracts.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\admin\\.nuget\\packages\\duende.identityserver.templates\\7.0.1\\duende.identityserver.templates.7.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}
