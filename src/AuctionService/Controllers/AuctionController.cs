@@ -27,7 +27,7 @@ namespace AuctionService.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<AuctionDto>>> GetAllAuctions([FromQuery] string? date)
+        public async Task<ActionResult<List<AuctionDto>>> GetAllAuctions([FromQuery] string date)
         {
             var query = _context.Auctions.OrderBy(x => x.Item.Make).AsQueryable();
 
@@ -88,7 +88,7 @@ namespace AuctionService.Controllers
             auction.Item.Model = updateAuctionDto.Model ?? auction.Item.Model;
             auction.Item.Color = updateAuctionDto.Color ?? auction.Item.Color;
             auction.Item.Mileage = updateAuctionDto.Mileage ?? auction.Item.Mileage;
-            auction.Item.Year = updateAuctionDto.Year ?? auction.Item.Year;
+            auction.Item.Year = updateAuctionDto?.Year ?? auction.Item.Year;
             var updateAuction = _mapper.Map<AuctionDto>(auction);
             await _endpoint.Publish<AuctionUpdated>(_mapper.Map<AuctionUpdated>(updateAuction));
             _context.Auctions.Update(auction);
@@ -108,7 +108,7 @@ namespace AuctionService.Controllers
             if (auction == null) return NotFound();
 
             if (auction.Seller != User.Identity.Name) return Forbid();
-            
+
             await _endpoint.Publish<AuctionDeleted>(_mapper.Map<AuctionDeleted>(auction));
             _context.Remove(auction);
 
