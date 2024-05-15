@@ -119,3 +119,10 @@ D:\Microservices\Carsties\src\auctionService\bin\Debug\net8.0\Microsoft.Identity
 D:\Microservices\Carsties\src\auctionService\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
 D:\Microservices\Carsties\src\auctionService\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
 D:\Microservices\Carsties\src\auctionService\obj\Debug\net8.0\AuctionService.sourcelink.json
+D:\Microservices\Carsties\src\AuctionService\bin\Debug\net8.0\Google.Protobuf.dll
+D:\Microservices\Carsties\src\AuctionService\bin\Debug\net8.0\Grpc.AspNetCore.Server.dll
+D:\Microservices\Carsties\src\AuctionService\bin\Debug\net8.0\Grpc.AspNetCore.Server.ClientFactory.dll
+D:\Microservices\Carsties\src\AuctionService\bin\Debug\net8.0\Grpc.Core.Api.dll
+D:\Microservices\Carsties\src\AuctionService\bin\Debug\net8.0\Grpc.Net.Client.dll
+D:\Microservices\Carsties\src\AuctionService\bin\Debug\net8.0\Grpc.Net.ClientFactory.dll
+D:\Microservices\Carsties\src\AuctionService\bin\Debug\net8.0\Grpc.Net.Common.dll

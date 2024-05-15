@@ -38,7 +38,7 @@ namespace AuctionService
                      cfg.ConfigureEndpoints(context);
                  });
              });
-
+            builder.Services.AddGrpc();
             builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
             {
@@ -55,6 +55,7 @@ namespace AuctionService
             app.UseAuthorization();
 
             app.MapControllers();
+            app.MapGrpcService<GrpcAuctionService>();
 
             try
             {
