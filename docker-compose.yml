@@ -25,7 +25,7 @@ services:
     image: oYezhov/auction-svc:latest
     build:
       context: .
-      dockerfile: src/AuctionService/Dockerfile
+      dockerfile: src/AuctionService/DockerFile
     environment:
       - ASPNETCORE_ENVIRONMENT=DEVELOPMENT
       - ASPNETCORE_URLS=http://+:80
@@ -47,7 +47,7 @@ services:
     image: oYezhov/search-svc:latest
     build:
       context: .
-      dockerfile: src/SearchService/Dockerfile
+      dockerfile: src/SearchService/DockerFile
     environment:
       - ASPNETCORE_ENVIRONMENT=DEVELOPMENT
       - ASPNETCORE_URLS=http://+:80
@@ -63,7 +63,7 @@ services:
     image: oYezhov/identity-svc:latest
     build:
       context: .
-      dockerfile: src/IdentityService/Dockerfile
+      dockerfile: src/IdentityService/DockerFile
     environment:
       - ASPNETCORE_ENVIRONMENT=Docker
       - ASPNETCORE_URLS=http://+:80
@@ -76,7 +76,7 @@ services:
     image: oYezhov/gateway-svc:latest
     build:
       context: .
-      dockerfile: src/GatewayService/Dockerfile
+      dockerfile: src/GatewayService/DockerFile
     environment:
       - ASPNETCORE_ENVIRONMENT=Docker
       - ASPNETCORE_URLS=http://+:80
@@ -98,4 +98,17 @@ services:
       - 7003:80
     depends_on:
       - mongodb
+      - rabbitmq
+  notification-svc:
+    image: oYezhov/notification-svc:latest
+    build:
+      context: .
+      dockerfile: src/NotificationService/DockerFile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=DEVELOPMENT
+      - ASPNETCORE_URLS=http://+:80
+      - RabbitMq__Host=rabbitmq
+    ports:
+      - 7004:80
+    depends_on:
       - rabbitmq
