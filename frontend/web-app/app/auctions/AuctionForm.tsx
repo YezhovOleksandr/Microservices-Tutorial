@@ -30,7 +30,7 @@ export default function AuctionForm({ auction }: Props) {
       reset({ make, model, color, mileage, year });
     }
     setFocus('make');
-  }, [ setFocus ])
+  }, [ setFocus, auction, reset ])
 
   async function onSubmit(data: FieldValues) {
 
@@ -39,7 +39,8 @@ export default function AuctionForm({ auction }: Props) {
     if (pathName === '/auctions/create') {
       res = await createAuction(data)
       id = res.id;
-    } else {
+    } 
+    else {
       if (auction) {
         res = await updateAction(data, auction.id);
         id = auction.id

@@ -21,7 +21,7 @@ export default function AuctionCard({ auction }: Props) {
                     <div className='absolute top-2 right-2'>
                         <CurrentBid 
                             reservePrice={auction.reservePrice} 
-                            amount={auction.currentHighBib} />
+                            amount={auction.currentHighBid} />
                     </div>
                 </div>
             </div>

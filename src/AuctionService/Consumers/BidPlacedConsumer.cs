@@ -19,10 +19,10 @@ public class BidPlacedConsumer : IConsumer<BidPlaced>
         var auctionId = Guid.Parse(context.Message.AuctionId);
         var auction = await _dbcontext.Auctions.FindAsync(auctionId);
 
-        if (auction.CurrentHighBib == null || context.Message.BidStatus.Contains("Accepted")
-        && context.Message.Amount > auction.CurrentHighBib)
+        if (auction.CurrentHighBid == null || context.Message.BidStatus.Contains("Accepted")
+        && context.Message.Amount > auction.CurrentHighBid)
         {
-            auction.CurrentHighBib = context.Message.Amount;
+            auction.CurrentHighBid = context.Message.Amount;
             await _dbcontext.SaveChangesAsync();
         }
 

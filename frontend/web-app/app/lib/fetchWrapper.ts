@@ -2,7 +2,8 @@ import { getTokenWorkaround } from "@/app/actions/authActions";
 import { log } from "console";
 import { headers } from "next/headers";
 
-const baseUrl = 'http://localhost:6001/';
+const baseUrl = process.env.API_URL
+
 
 
 async function get(url: string) {
@@ -11,6 +12,7 @@ async function get(url: string) {
         headers: await getHeaders()
     }
 
+    console.log(baseUrl)
     const response = await fetch(baseUrl + url, requestOptions);
     return await handleResponse(response);
 }

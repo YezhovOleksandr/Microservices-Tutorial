@@ -5,14 +5,14 @@ import { useBidStore } from '@/hooks/useBidStore';
 import { Auction, AuctionFinished, Bid } from '@/types';
 import { HubConnection, HubConnectionBuilder } from '@microsoft/signalr'
 import { User } from 'next-auth';
-import { ReactNode, useEffect, useState } from 'react'
+import React, { ReactNode, useEffect, useState } from 'react'
 import toast from 'react-hot-toast';
 import AuctionCreatedToast from '../components/AuctionCreatedToast';
 import { getDetailedViewData } from '../actions/AuctionActions';
 import AuctionFinishedToast from '../components/AuctionFinishedToast';
 
 type Props = {
-    children: ReactNode
+    children: ReactNode | null
     user: User | null
 }
 export default function SignalRProvider({ children, user }: Props) {
@@ -20,15 +20,16 @@ export default function SignalRProvider({ children, user }: Props) {
     const setCurrenctPrice = useAuctionStore(state => state.setCurrentPrice);
 
     const addBid = useBidStore(state => state.addBid);
+    const apiUrl = process.env.NODE_ENV === 'production' ? 'https://api.carsties.com/notifications' : process.env.NEXT_PUBLIC_NOTIFY_URL
 
     useEffect(() => {
         const newConnection = new HubConnectionBuilder()
-            .withUrl('http://localhost:6001/notifications')
+            .withUrl(apiUrl!)
             .withAutomaticReconnect()
             .build();
 
         setConnection(newConnection);
-    }, []);
+    }, [ apiUrl ]);
 
     useEffect(() => {
         if (connection) {
@@ -65,8 +66,8 @@ export default function SignalRProvider({ children, user }: Props) {
         return () => {
             connection?.stop();
         }
-    }, [ connection, setCurrenctPrice ]);
-
+    }, [ connection, setCurrenctPrice, addBid, user?.username ]);
+    //console.log(children);
     return (
         children
     )

@@ -37,7 +37,6 @@ export default function BidList({ user, auction }: Props) {
                     console.log(res.data)
                 }
 
-
                 setBids(res as Bid[]);
             }).catch(err => {
                 toast.error(err.message)
